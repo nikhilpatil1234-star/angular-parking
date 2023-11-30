@@ -1,0 +1,51 @@
+.parking-container {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  width: 80%;
+
+  .leftside {
+    border: 1px solid rgb(190, 178, 178);
+    .buttons-container {
+      .selected {
+        img {
+          border: 2px solid rgb(209, 204, 204);
+          border-radius: 5px;
+        }
+      }
+      button {
+        display: contents;
+        img {
+          margin: 5px;
+
+          width: 150px;
+          height: 100px;
+        }
+      }
+    }
+    .inp-container {
+      width: 400px;
+    }
+    .duration-charges {
+      .btns {
+        width: 100px;
+        border: 1px solid grey;
+        margin: 10px 10px;
+        background-color: aliceblue;
+        border-radius: 5px;
+      }
+    }
+    .refresh-tictet {
+      display: flex;
+      justify-content: space-around;
+      margin: 10px;
+    }
+  }
+  .rightside {
+    margin-top: 20px;
+    border: 1px solid rgb(230, 214, 214);
+    table {
+      width: 700px;
+    }
+  }
+}

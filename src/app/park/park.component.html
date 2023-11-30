@@ -1,0 +1,77 @@
+<div class="parking-container">
+  <div class="leftside">
+    <h3>Ticket</h3>
+    <div class="buttons-container">
+      <button [ngClass]="parkingObj.vehicle_type === 'bike' ? 'selected' : ''">
+        <img (click)="assignVehicleType('bike')" src="../../assets/bike.jfif" />
+      </button>
+      <button [ngClass]="parkingObj.vehicle_type === 'auto' ? 'selected' : ''">
+        <img (click)="assignVehicleType('auto')" src="../../assets/auto.jfif" />
+      </button>
+      <button [ngClass]="parkingObj.vehicle_type === 'car' ? 'selected' : ''">
+        <img (click)="assignVehicleType('car')" src="../../assets/car.jfif" />
+      </button>
+      <button [ngClass]="parkingObj.vehicle_type === 'bus' ? 'selected' : ''">
+        <img (click)="assignVehicleType('bus')" src="../../assets/bus.jfif" />
+      </button>
+    </div>
+    <div class="inp-container">
+      <label> licenece plate</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="vehicle number"
+        [(ngModel)]="parkingObj.license_plate"
+      />
+      <label> phone no</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="phone number"
+        [(ngModel)]="parkingObj.mobileNo"
+      />
+    </div>
+    <div class="duration-charges">
+      <button (click)="assignTicketPrice(10)" class="btns">1hr:10Rs</button>
+      <button (click)="assignTicketPrice(20)" class="btns">2hr:20Rs</button>
+      <button (click)="assignTicketPrice(30)" class="btns">6hr:30Rs</button>
+      <button (click)="assignTicketPrice(200)" class="btns">1day:200Rs</button>
+      <button (click)="assignTicketPrice(400)" class="btns">2day:400Rs</button>
+    </div>
+    <div class="refresh-tictet">
+      <button (click)="clearData()" class="btn btn-dark">Refresh</button>
+      <button (click)="createPost()" class="btn btn-dark">Create Ticket</button>
+    </div>
+    {{ parkingObj | json }}
+  </div>
+  <div class="rightside">
+    <table>
+      <tr style="border: 1px solid grey">
+        <th mat-sort-header="name">#</th>
+        <th mat-sort-header="calories">Vehicle Number</th>
+        <th mat-sort-header="fat">Contact</th>
+        <th mat-sort-header="carbs">Charge</th>
+        <th mat-sort-header="protein">status</th>
+      </tr>
+
+      <tr
+        *ngFor="let dessert of vehicleData; let index = index"
+        style="border: 1px solid grey"
+      >
+        <td>{{ index + 1 }}</td>
+        <td>{{ dessert.license_plate }}</td>
+        <td>{{ dessert.mobileNo }}</td>
+        <td>{{ dessert.ticket_amount }}Rs</td>
+        <td>
+          <button class="btn btn-success" *ngIf="dessert.out_time === null">
+            markout
+          </button>
+          <span *ngIf="dessert.out_time !== null">
+            {{ dessert.out_time | date : "dd-MM-yy" }}
+            {{ dessert.out_time | date : "hh:mm" }}
+          </span>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
